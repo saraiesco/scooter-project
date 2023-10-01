@@ -10,18 +10,18 @@ class ScooterApp {
 
   }
 
-  registeredUser(password,username, age){
-    if(this.registeredUsers[username]){
+  registerUser(password,username, age){
+    if(this.registerUsers[username]){
       throw new Error('already registered')
     }else if(this.registeredUsers[age] < 18){
       throw new Error('too young to register')
     }else{
-      this.registeredUsers[username][username] = username;
-      this.registeredUsers[username][password] = password;
-      this.registeredUsers[username][age]=age;
-      this.registeredUsers[username][loggedIn] = false;
+      this.registerUsers[username][username] = username;
+      this.registerUsers[username][password] = password;
+      this.registerUsers[username][age]=age;
+      this.registerUsers[username][loggedIn] = false;
       console.log('user has been registered')
-      return this.registeredUsers[username];
+      return this.registerUsers[username];
     }
   }
 
@@ -94,7 +94,7 @@ class ScooterApp {
   }
 
   print(){
-    console.log(this.registeredUsers)
+    console.log(this.registerUsers)
     for(station in this.stations){
       console.log(`${station} : ${this.stations[station].length}`)
     }
