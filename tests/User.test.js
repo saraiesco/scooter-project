@@ -9,11 +9,33 @@ describe("User property tests", () => {
     expect(typeof user.username).toBe("string");
   })
   // test password
-
+  test("password should be a string", () => {
+    expect(typeof user.password).toBe("string");
+  })
   // test age
+  test("age should be a number", () => {
+    expect(typeof user.age).toBe("number");
+  })
 })
 
+//methods
+  // test login
+  describe('login function', () =>{ 
+    test('changes user.loggedIn to be true', () =>{
+      jest.before(() => {
+        user.login();
+      })      
+      expect(user.loggedIn).toEqual(true)
+    })
+  })
 
-// test login
+  // test logout
 
-// test logout
+  describe('logout function', () =>{
+    test('changes user.loggedIn to be false', () =>{
+      jest.before(() => {
+        user.logout();
+      }) 
+      expect(user.loggedIn).toEqual(false)
+    })
+  })

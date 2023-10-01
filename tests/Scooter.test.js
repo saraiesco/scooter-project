@@ -18,8 +18,5 @@ describe('scooter methods', () => {
 
   //dock method
 
-  //requestRepair method
-
-  //charge method
 
 })

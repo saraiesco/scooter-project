@@ -10,7 +10,7 @@ class ScooterApp {
 
   }
 
-  registeredUsers(password,username, age){
+  registeredUser(password,username, age){
     if(this.registeredUsers[username]){
       throw new Error('already registered')
     }else if(this.registeredUsers[age] < 18){
@@ -81,7 +81,7 @@ class ScooterApp {
    //registeredUsers = {shami : { username: ‘shami1’ , password: ‘milo’ , age : 17, logginIn: true} ,sarai : { username: ‘sarai’ , password: ‘hamilton’ , age : 10, logginIn: false} }
    //this.stations = {chicago : [ scoot1:{station:chicago, user:null} , scoot2:{station:chicago, user:null}] , brooklyn : [scoot4:{station:brooklyn,user:null}, scoot9:{station:brooklyn,user:null}]}
   rentScooter(scooter, user){
-    if(scooter.user !== 'null'){
+    if(Scooter.user !== 'null'){
       throw new Error('scooter is already rented')
     } 
     let array = this.stations[scooter.station]
@@ -95,7 +95,9 @@ class ScooterApp {
 
   print(){
     console.log(this.registeredUsers)
-    console.log(this.stations)
+    for(station in this.stations){
+      console.log(`${station} : ${this.stations[station].length}`)
+    }
   }
 }
 
