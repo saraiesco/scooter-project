@@ -22,16 +22,12 @@ describe("User property tests", () => {
   describe('user methods', () =>{ 
     // test login
     test('changes user.loggedIn to be true', () =>{
-      jest.before(() => {
         user.login();
-      })      
       expect(user.loggedIn).toEqual(true)
     })
   // test logout
     test('changes user.loggedIn to be false', () =>{
-      jest.before(() => {
         user.logout();
-      }) 
       expect(user.loggedIn).toEqual(false)
     })
   })
