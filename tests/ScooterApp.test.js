@@ -8,7 +8,7 @@ const scooterApp = new ScooterApp();
 // register user
 describe("registerUser method tests", () => {
   test("Should return instance of User", () => {
-    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
+    let response = scooterApp.registerUser("test123" , "Joe Bloggs", 21);
     expect(response).toBeInstanceOf(User);
   });
 });
@@ -16,17 +16,17 @@ describe("registerUser method tests", () => {
 // login User
 describe("login method tests", () => {
   test("Should login user in scooterApp", () => {
-    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
-    //
-    expect(response).toBeInstanceOf(User);
+    scooterApp.loginUser("Joe Bloggs", "test123")
+    expect(scooterApp.registeredUsers["Joe Bloggs"]).toBe(true);
   });
 });
+
 // logout User
 describe("logout method tests", () => {
   test("Should logout user in scooterApp", () => {
     //
-    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
-    expect(response).toBeInstanceOf(User);
+    scooterApp.logoutUser("Joe Bloggs")
+    expect(scooterApp.registeredUsers["Joe Bloggs"].toBe(false))
   });
 });
 
@@ -34,8 +34,7 @@ describe("logout method tests", () => {
 describe("create scooter method tests", () => {
   test("Should create and return new scooter", () => {
     //
-    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
-    expect(response).toBeInstanceOf(User);
+    expect(scooterApp.createScooter("chicago")).toBeInstanceOf(Scooter)
   });
 });
 
@@ -43,8 +42,9 @@ describe("create scooter method tests", () => {
 describe("dock scooter method tests", () => {
   test("Should dock scooter at station", () => {
     //
-    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
-    expect(response).toBeInstanceOf(User);
+    scooterApp.dockScooter("scoot4567", "chicago")
+    expect(["scoot4567"].station).toBe("chicago")
+    expect(["scoot4567"].user).toBe(null)
   });
 });
 
@@ -53,16 +53,9 @@ describe("dock scooter method tests", () => {
 describe("rent scooter method tests", () => {
   test("Should rent scoot out to user", () => {
     //
-    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
-    expect(response).toBeInstanceOf(User);
+    scooterApp.rentScooter("scoot4567", "Joe Bloggs")
+    expect(["scoot4567"].station).toBe(null)
+    expect(["scoot4567"].user).toBe("Joe Bloggs")
   });
 });
 
-//print
-describe("rent scooter method tests", () => {
-  test("Should return instance of User", () => {
-    //
-    let response = scooterApp.registerUser("Joe Bloggs", "test123", 21);
-    expect(response).toBeInstanceOf(User);
-  });
-});
