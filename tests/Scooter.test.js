@@ -9,28 +9,36 @@ describe('scooter object', () => {
   });
 })
 
+beforeEach(() => {
+  scooter = new Scooter();
+});
 //Method tests
 describe('scooter methods', () => {
-  // FINISH for ERRORS
+  // tests here!
   //rent method
   test('rent scooter to user', () =>{
-    // this.charge <=10
-      scooter.rent(user);     
-    expect(Scooter.rent()).toThrow("scooter needs to charge")
-
-    //this.isBroken === true
-      scooter.rent(user); 
-    expect(Scooter.dock()).toThrow('scooter needs repair')
-
-      scooter.rent(user);   
+      scooter.rent("Joe Bloggs");   
     expect(scooter.station).toBe(null)
-    expect(scooter.user).toBe(user)
+    expect(scooter.user).toBe("Joe Bloggs")
   })
+
+ test('rent throws error due to charge', () =>{
+    // this.charge <=10
+      scooter.charge = 10   
+    expect(()=>scooter.rent("Joe Bloggs")).toThrow("scooter needs to charge")
+ })
+
+  test('rent throws error due to broken', () =>{
+    //this.isBroken === true
+      scooter.isBroken = true;
+    expect(()=>scooter.rent("Joe Bloggs")).toThrow('scooter needs repair')
+  })
+
   //dock method
   test('dock scooter at station', () =>{
-      scooter.dock(station);
-    expect(scooter.station).toBe(station)
-    expect(scooter.user).toBe(null)
+      scooter.dock("chicago");
+    expect(scooter.station).toBe("chicago")
+    expect(scooter.user).toBeNull()
   })
 
 })
